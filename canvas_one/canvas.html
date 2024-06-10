@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="canvas_div">
+        <canvas id="myCanvas" style="border:1px solid white"></canvas>
+    </div>
+</body>
+
+<script>
+    const canvas = document.getElementById("myCanvas");
+    const context = canvas.getContext('2d');
+
+    //paddle
+    let paddleWidth = 50;
+    let paddleHeight = 10;
+
+    const width = 300;
+    const height = 500;
+
+    canvas.width = width;
+    canvas.height = height;
+
+    // // create a rect
+    context.fillStyle = "black";
+    context.fillRect(0,0,width,height)
+
+    //create a paddle top
+    context.fillStyle = 'white';
+    context.fillRect(125,10,paddleWidth,paddleHeight);
+
+    //create a paddle bottom
+    context.fillStyle = 'white';
+    context.fillRect(125,height - 20,paddleWidth,paddleHeight);
+
+    //center line
+    context.beginPath();
+    context.setLineDash([5]);   //line gap with space
+    context.moveTo(0, height/2);
+    context.lineTo(width,height/2);
+    context.strokeStyle="white";
+    context.stroke();
+
+    //Ball
+    // create a cercle
+    context.beginPath();
+    context.arc(width/2, height/2, 10 , 2*Math.PI, false);
+    context.fillStyle = "white"
+    context.fill();
+
+    //players Scores
+    context.font = "32px Josenfin Sans";
+    context.fillText(10, 20, height/2-30)
+
+    context.fillText(15, 20, height/2+50)
+</script>
+
+</html>
